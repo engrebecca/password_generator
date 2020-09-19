@@ -54,7 +54,7 @@ while (pwdNeed == true){
   console.log(charLen);
 
   // If letter is between 8-128 run the following
-  if (charLen > 8 && charLen < 128){
+  if (charLen >= 8 && charLen <= 128){
     pwdNeed = false;
     // Prompt what character types needed (lower, upper, numeric, and/or special)
     var charLower = confirm("Click OK to include lowercase letters.");
@@ -112,8 +112,18 @@ while (pwdNeed == true){
           genSpec = randSpec();
           passwordArr.push(genSpec);
         }
-        console.log(passwordArr);
       }
+      // Convert password from array to string with no commas at correct length
+      console.log(passwordArr);
+      passwordString = passwordArr.join();
+      console.log("Password string: " + passwordString);
+      console.log(typeof(passwordString));
+
+      passwordFiltered = passwordString.replace(/,/g, "");
+      console.log("Filtered password: " + passwordFiltered);
+
+      passwordFinal = passwordFiltered.slice(0,charLen);
+      console.log("Final password: " + passwordFinal);
     }
   } 
   // Validate password length between 8-128 characters
