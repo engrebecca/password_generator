@@ -1,4 +1,3 @@
-// DOM SECTION
 // Generate button
 var generateBtn = document.querySelector("#generate");
 
@@ -8,16 +7,14 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = passwordFinal;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
 // VARIABLES
 var pwdNeed = true;
-console.log(pwdNeed)
+// console.log(pwdNeed)
 var passwordArr = []
 
 
@@ -26,58 +23,58 @@ function randLower(){
   lowerLett = "abcdefghijklmnopqrstuvwxyz";
   return lowerLett[Math.floor(Math.random() * lowerLett.length)];
 }
-console.log(randLower());
+// console.log(randLower());
 
 function randUpper(){
   upperLett = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   return upperLett[Math.floor(Math.random() * upperLett.length)];
 }
-console.log(randUpper());
+// console.log(randUpper());
 
 function randNum(){
   nums = "1234567890";
   return nums[Math.floor(Math.random() * nums.length)];
 }
-console.log(randNum());
+// console.log(randNum());
 
 function randSpec(){
   specChar = "!@#$%^&*(){}[]+-=<>.?~";
   return specChar[Math.floor(Math.random() * specChar.length)];
 }
-console.log(randSpec());
+// console.log(randSpec());
 
 function generatePassword (){
 // WHILE LOOP FOR PROMPTS AND GENERATING PASSWORD
   while (pwdNeed == true){
     // Prompt user to enter desired password length
     var charLen = prompt("Enter desired password length. Choose between 8-128 characters.");
-    console.log(charLen);
+    // console.log(charLen);
 
     // If letter is between 8-128 run the following
     if (charLen >= 8 && charLen <= 128){
       pwdNeed = false;
       // Prompt what character types needed (lower, upper, numeric, and/or special)
       var charLower = confirm("Click OK to include lowercase letters.");
-      console.log(charLower);
+      // console.log(charLower);
 
       var charUpper = confirm("Click OK to include uppercase letters.");
-      console.log(charUpper);
+      // console.log(charUpper);
 
       var charNum = confirm("Click OK to include numbers.");
-      console.log(charNum);
+      // console.log(charNum);
 
       var charSpec = confirm("Click OK to include special characters.");
-      console.log(charSpec);
+      // console.log(charSpec);
 
       // Validate at least one character type selected
       if (charLower == false && charUpper == false && charNum == false && charSpec == false){
         alert("Cannot create password. Please select at least one character type.");
       } 
-      // Generate password
+      // Generate password based on criteria
       else {
         // Array representing T/F for character types selected
         var typesArr = [charLower, charUpper, charNum, charSpec];
-        console.log("types array: " + typesArr);
+        // console.log("types array: " + typesArr);
 
         // Function to filter out only true values from array
         function charTrue (input){
@@ -86,15 +83,13 @@ function generatePassword (){
 
         // Filter array to show only true character types requested
         trueCharArr = typesArr.filter(charTrue);
-        console.log("true char array: " + trueCharArr);
+        // console.log("true char array: " + trueCharArr);
 
         // Determine number of true character types requested
         numTrueChar = trueCharArr.length;
-        console.log("Number characters requested: " + numTrueChar)
+        // console.log("Number characters requested: " + numTrueChar)
 
         // Generate password
-        // charLenInt = parseInt(charLen);
-        // console.log(typeof(charLenInt));
         for (var i = 0; i < parseInt(charLen); i += numTrueChar){
           if (charLower == true){
             genLower = randLower();
@@ -114,16 +109,16 @@ function generatePassword (){
           }
         }
         // Convert password from array to string with no commas at correct length
-        console.log(passwordArr);
+        // console.log(passwordArr);
         passwordString = passwordArr.join();
-        console.log("Password string: " + passwordString);
-        console.log(typeof(passwordString));
+        // console.log("Password string: " + passwordString);
+        // console.log(typeof(passwordString));
 
         passwordFiltered = passwordString.replace(/,/g, "");
-        console.log("Filtered password: " + passwordFiltered);
+        // console.log("Filtered password: " + passwordFiltered);
 
         passwordFinal = passwordFiltered.slice(0,charLen);
-        console.log("Final password: " + passwordFinal);
+        // console.log("Final password: " + passwordFinal);
       }
     } 
     // Validate password length between 8-128 characters
