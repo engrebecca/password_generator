@@ -71,7 +71,7 @@ function generatePassword (){
 
       // Validate at least one character type selected
       if (charLower == false && charUpper == false && charNum == false && charSpec == false){
-        alert("Cannot create password. Please select one character type at minimum.");
+        alert("Cannot create password. Please select at least one character type.");
       } 
       // Generate password
       else {
