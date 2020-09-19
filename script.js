@@ -83,11 +83,11 @@ while (pwdNeed == true){
         return input == true;
       }
 
-      // Filter array to show # of true character types requested
+      // Filter array to show only true character types requested
       trueCharArr = typesArr.filter(charTrue);
       console.log("true char array: " + trueCharArr);
 
-      // 
+      // Determine number of true character types requested
       numTrueChar = trueCharArr.length;
       console.log(numTrueChar)
     }
