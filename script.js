@@ -1,3 +1,4 @@
+// DOM SECTION
 // Generate button
 var generateBtn = document.querySelector("#generate");
 
@@ -17,10 +18,7 @@ generateBtn.addEventListener("click", writePassword);
 // VARIABLES
 var pwdNeed = true;
 console.log(pwdNeed)
-// var charLower = false;
-// var charUpper = false;
-// var charNum = false;
-// var charSpec = false;
+
 
 // FUNCTIONS
 function randLower(){
@@ -48,18 +46,16 @@ function randSpec(){
 console.log(randSpec());
 
 
-// While loop
+// WHILE LOOP FOR PROMPTS AND GENERATING PASSWORD
 while (pwdNeed == true){
   // Prompt user to enter desired password length
-  charLen = prompt("Enter desired password length. Choose between 8-128 characters.");
+  var charLen = prompt("Enter desired password length. Choose between 8-128 characters.");
   console.log(charLen);
 
   // If letter is between 8-128 run the following
   if (charLen > 8 && charLen < 128){
-    // Run all the other prompts
     pwdNeed = false;
-    // Run all the other character prompts
-    // Prompt: character types (lower, upper, numeric, and/or special)
+    // Prompt what character types needed (lower, upper, numeric, and/or special)
     var charLower = confirm("Click OK to include lowercase letters.");
     console.log(charLower);
 
@@ -72,18 +68,36 @@ while (pwdNeed == true){
     var charSpec = confirm("Click OK to include special characters.");
     console.log(charSpec);
 
-// Validate so at least one character type selected
+    // Validate at least one character type selected
+    if (charLower == false && charUpper == false && charNum == false && charSpec == false){
+      alert("Cannot create password. Please select one character type at minimum.");
+    } 
+    // Generate password
+    else {
+      // Array representing T/F for character types selected
+      var typesArr = [charLower, charUpper, charNum, charSpec];
+      console.log("types array: " + typesArr);
 
-// Generate password with for loop and function
+      // Function to filter out only true values from array
+      function charTrue (input){
+        return input == true;
+      }
 
-// Display generated password in box
+      // Filter array to show # of true character types requested
+      trueCharArr = typesArr.filter(charTrue);
+      console.log("true char array: " + trueCharArr);
+
+      // 
+      numTrueChar = trueCharArr.length;
+      console.log(numTrueChar)
+    }
   } 
-  // Else run the following error message and redirect to choose valid length
+  // Validate password length between 8-128 characters
   else {
     prompt("Please select a length between 8-128 characters.");
   }
 }
 
 
-
-// Need user validation to ensure at least one criteria chosen
+// Generate password with for loop and function
+// Display generated password in box
