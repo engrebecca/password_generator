@@ -18,6 +18,7 @@ generateBtn.addEventListener("click", writePassword);
 // VARIABLES
 var pwdNeed = true;
 console.log(pwdNeed)
+var passwordArr = []
 
 
 // FUNCTIONS
@@ -89,7 +90,30 @@ while (pwdNeed == true){
 
       // Determine number of true character types requested
       numTrueChar = trueCharArr.length;
-      console.log(numTrueChar)
+      console.log("Number characters requested: " + numTrueChar)
+
+      // Generate password
+      // charLenInt = parseInt(charLen);
+      // console.log(typeof(charLenInt));
+      for (var i = 0; i < parseInt(charLen); i += numTrueChar){
+        if (charLower == true){
+          genLower = randLower();
+          passwordArr.push(genLower);
+        }
+        if (charUpper == true){
+          genUpper = randUpper();
+          passwordArr.push(genUpper);
+        }
+        if (charNum == true){
+          genNum = randNum();
+          passwordArr.push(genNum);
+        }
+        if (charSpec == true){
+          genSpec = randSpec();
+          passwordArr.push(genSpec);
+        }
+        console.log(passwordArr);
+      }
     }
   } 
   // Validate password length between 8-128 characters
